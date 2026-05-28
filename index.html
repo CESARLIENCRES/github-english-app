@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>English App</title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="style.css">
+
+    <!-- ICONOS -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- PWA -->
+
+    <link rel="manifest"
+        href="manifest.json">
+
+    <meta name="theme-color"
+        content="#0f172a">
+
+    <!-- iPhone -->
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes">
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black">
+
+    <link
+        rel="apple-touch-icon"
+        href="icon.png">
+
+</head>
+<script src="app.js"></script>
+<body>
+
+<!-- LOGIN -->
+
+<div id="loginScreen">
+
+    <div class="login-box">
+
+        <h2>English App</h2>
+
+        <input
+            type="text"
+            id="user"
+            placeholder="Usuario">
+
+        <input
+            type="password"
+            id="pass"
+            placeholder="Contraseña">
+
+        <button onclick="login()">
+            Entrar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- APP -->
+
+<div class="app-container">
+
+    <!-- XP -->
+
+    <div id="xpPopup">
+        +10 XP
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h2 id="screenTitle">
+            Practica tu inglés
+        </h2>
+
+       <p>
+
+    <span id="learnedCount">0</span>
+
+    aprendidas
+
+    ·
+
+    Total palabras
+
+    <span id="totalCount">0</span>
+
+</p> 
+
+    </div>
+
+
+    <!-- BOTÓN PRINCIPAL -->
+
+    
+
+
+    <!-- BARRA PROGRESO -->
+
+    <div
+        class="progress-container hidden"
+        id="progressContainer">
+
+        <div
+            class="progress-bar"
+            id="progressBar">
+        </div>
+
+    </div>
+
+
+    <!-- LISTA PALABRAS -->
+<div id="categories"></div>
+    <div id="wordList"></div>
+
+
+    <!-- FLASHCARD -->
+
+    <div
+        id="flashcard"
+        class="hidden">
+
+        <div class="flash-inner">
+
+            <div
+                class="flash-word"
+                id="flashWord">
+            </div>
+
+            <div
+                class="flash-answer hidden"
+                id="flashAnswer">
+            </div>
+
+            <div class="flash-buttons">
+
+                <button
+                    id="speakBtn"
+                    onclick="speak(allWords[currentIndex].english)">
+
+                    🔊 Escuchar
+
+                </button>
+
+                <button
+                    id="showBtn"
+                    onclick="revealAnswer()">
+
+                    👁 Mostrar
+
+                </button>
+
+                <button
+                    id="nextBtn"
+                    onclick="nextCard()">
+
+                    ➡ Siguiente
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- AÑADIR PALABRA -->
+
+    <div
+        id="addScreen"
+        class="hidden">
+
+        <input
+            id="newEng"
+            placeholder="English">
+
+        <input
+            id="newSpa"
+            placeholder="Español">
+
+        <button onclick="addWord()">
+            Guardar
+        </button>
+
+    </div>
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+    <!-- SALIR -->
+
+    <button
+        class="nav-btn"
+        onclick="exitStudy()">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+    </button>
+
+
+    <!-- HOME -->
+
+    <button
+        class="nav-btn active"
+        onclick="setActive(this); showHome()">
+
+        <i class="fa-solid fa-house"></i>
+
+    </button>
+
+
+    <!-- ESTUDIO -->
+
+    <button
+        class="nav-btn"
+        onclick="setActive(this); startFlashcards()">
+
+        <i class="fa-solid fa-graduation-cap"></i>
+
+    </button>
+
+
+    <!-- AÑADIR -->
+
+    <button
+        class="nav-btn"
+        onclick="setActive(this); showAdd()">
+
+        <i class="fa-solid fa-plus"></i>
+
+    </button>
+
+
+    <!-- FAVORITOS -->
+
+    <button
+        class="nav-btn"
+        onclick="setActive(this); showFavorites()">
+
+        <i class="fa-solid fa-heart"></i>
+
+    </button>
+
+</div>
